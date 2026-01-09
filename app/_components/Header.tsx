@@ -1,3 +1,4 @@
+'use client'
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
 import React from 'react'
@@ -80,15 +81,16 @@ function Header() {
     <NavigationMenuItem>
       <NavigationMenuTrigger>Courses</NavigationMenuTrigger>
       <NavigationMenuContent>
-        <ul className='grid grid-cols-2 gap-2 sm:w-100 md:w-125 lg:w-150'>
-            {courses.map((course,index)=>(
-                <div key={index} className='p-2 hover:bg-accent rounded-xl cursor-pointer'>
-                    <h2 className='font-medium'>{course.name}</h2>
-                    <p className='text-sm text-gray-500'>{course.desc}</p>
-                </div>
+        <ul className='grid grid-cols-2 gap-2 w-80 md:w-96'>
+            {courses.map((course)=>(
+                <Link key={course.id} href={course.path}>
+                  <div className='p-2 hover:bg-accent rounded-xl cursor-pointer'>
+                      <h2 className='font-medium'>{course.name}</h2>
+                      <p className='text-sm text-gray-500'>{course.desc}</p>
+                  </div>
+                </Link>
               ))}
         </ul>
-        <NavigationMenuLink>Link</NavigationMenuLink>
       </NavigationMenuContent>
     </NavigationMenuItem>
     <NavigationMenuLink>
