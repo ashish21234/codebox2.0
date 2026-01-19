@@ -13,6 +13,7 @@ import {
   NavigationMenuViewport,
 } from "@/components/ui/navigation-menu"
 import Link from 'next/link'
+import { UserButton, useUser, SignedIn, SignedOut } from '@clerk/nextjs'
 const courses = [
   {
     id: 1,
@@ -70,6 +71,7 @@ const courses = [
   }
 ];
 function Header() {
+  const {user} = useUser();
   return (
     <div className="p-4 max-w-7xl flex justify-between w-full items-center">
       <div className='flex gap-2 items-center'>
@@ -93,18 +95,23 @@ function Header() {
         </ul>
       </NavigationMenuContent>
     </NavigationMenuItem>
-    <NavigationMenuLink>
+    <NavigationMenuLink asChild>
         <Link href={'/projects'}>Projects</Link>
     </NavigationMenuLink>
-    <NavigationMenuLink>
+    <NavigationMenuLink asChild>
         <Link href={'/pricing'}>Pricing</Link>
     </NavigationMenuLink>
-    <NavigationMenuLink>
+    <NavigationMenuLink asChild>
         <Link href={'/Contact-us'}>Contact Us</Link>
     </NavigationMenuLink>
   </NavigationMenuList>
 </NavigationMenu>
-      <Button className='font-game text-2xl' variant={'pixel'}>Signup</Button>
+      {!user ? 
+      <Link href={'/sign-in'}>
+      <Button className='font-game text-2xl' variant={'pixel'}>Signup</Button> </Link>
+      :<div className='flex items-center gap-4'> <Button className='font-game text-2xl px-4 py-2' variant={'pixel'}>Dashboard</Button>
+      <UserButton />
+      </div>}
     </div>
   )
 }
