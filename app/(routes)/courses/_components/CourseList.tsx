@@ -2,16 +2,32 @@
 import axios from 'axios'
 import { ChartNoAxesColumnIncreasingIcon } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 
-type Course={
+export type Course={
     id:number,
     courseId:number,
     title:string,
     desc:string,
     bannerImage:string,
     level:string,
-    tag:string
+    tag:string,
+    chapters?:Chapter[]
+}
+type Chapter={
+    chapterId:number,
+    courseId:number,
+    desc:string,
+    name:string,
+    id:number,
+    exercises:exercise[]
+}
+type exercise={
+        name:string,
+        slug:string,
+        xp:number,
+        difficulty:string
 }
 function CourseList() {
     const [courseList,setCourseList]=useState<Course[]>([])
@@ -36,7 +52,8 @@ function CourseList() {
     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-5 mt-3'>
         {loading && <p>Loading courses...</p>}
         {!loading && courseList?.map((course: Course,index: number)=>(
-            <div key={course.id ?? index} className='border-4 rounded-xl hover:bg-zinc-900 cursor-pointer'>
+            <Link href={'/courses/'+course?.courseId} key={index}>
+            <div className='border-4 rounded-xl hover:bg-zinc-900 cursor-pointer'>
                 <Image 
                     src={(course?.bannerImage).trimEnd()} 
                     width={400} 
@@ -47,12 +64,13 @@ function CourseList() {
                 <div className='p-4'>
                     <h2 className='font-game text-2xl'>{course?.title}</h2>
                     <p className='font-game text-xl text-gray-400 line-clamp-2'>{course?.desc}</p>
-                    <h2 className='bg-zinc-800 flex gap-2 font-game p-1 mt-3 px-4 rounded-2xl items-center inline-flex'>
+                    <h2 className='bg-zinc-800 inline-flex gap-2 font-game p-1 mt-3 px-4 rounded-2xl items-center'>
                         <ChartNoAxesColumnIncreasingIcon className='h-3 w-4'/>
                         {course?.level}
                     </h2>
                     </div>
             </div>
+            </Link>
         ))}
     </div>
   )
