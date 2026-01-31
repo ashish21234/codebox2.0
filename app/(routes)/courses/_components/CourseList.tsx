@@ -13,7 +13,13 @@ export type Course={
     bannerImage:string,
     level:string,
     tag:string,
-    chapters?:Chapter[]
+    chapters?:Chapter[],
+    userEnrolled?:boolean,
+    courseEnrolledInfo?:CourseEnrolledInfo
+}
+type CourseEnrolledInfo={
+    xpEarned:number,
+    enrolledDate:any
 }
 type Chapter={
     chapterId:number,
