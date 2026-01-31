@@ -28,6 +28,13 @@ function CourseStatus({courseDetail}:Props) {
             })
         }
     },[courseDetail])
+    const UpdateProgress=(currentValue:number,totalValue:number)=>{
+        if(currentValue&&totalValue){
+            const perc=(currentValue*100)/totalValue;
+            return perc;
+        }
+        return 0;
+    }
   return (
     <div className='font-game p-4 border-4 rounded-xl w-full'>
         <h2 className='text-3xl'>
@@ -46,8 +53,8 @@ function CourseStatus({courseDetail}:Props) {
             <Image src={'/star.ico'} alt='book' width={50} height={50}/>
             <div className='w-full'>
             <h2 className='flex justify-between text-2xl w-full'>XP Earned
-                <span className='text-gray-400'>5/{counts?.totalXp}</span></h2>
-            <Progress value={17} className='mt-2'/>
+                <span className='text-gray-400'>{courseDetail?.courseEnrolledInfo?.xpEarned}/{counts?.totalXp}</span></h2>
+            <Progress value={UpdateProgress(courseDetail?.courseEnrolledInfo?.xpEarned??0,counts?.totalXp)} className='mt-2'/>
             </div>
         </div>
     </div>
