@@ -1,7 +1,7 @@
 import { db } from "@/config/db";
-import { CourseChaptersTable, CourseTable, EnrollCourseTable } from "@/config/schema";
+import { CompletedExerciseTable, CourseChaptersTable, CourseTable, EnrollCourseTable } from "@/config/schema";
 import { currentUser } from "@clerk/nextjs/server";
-import { and, eq } from "drizzle-orm";
+import { and, desc, eq } from "drizzle-orm";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest){
@@ -18,11 +18,19 @@ export async function GET(req: NextRequest){
         //@ts-ignore
         .where(and(eq(EnrollCourseTable.courseId, courseIdNum), eq(EnrollCourseTable.userId,user?.primaryEmailAddress?.emailAddress)))
         const isEnrolledCourse=enrolledCourse?.length>0?true:false;
+
+        const completedExercises=await db.select().from(CompletedExerciseTable)
+        //@ts-ignore
+        .where(and(eq(CompletedExerciseTable.courseId, courseIdNum), eq(CompletedExerciseTable.userId,user?.primaryEmailAddress?.emailAddress)) )
+        .orderBy(desc(CompletedExerciseTable?.courseId),desc(CompletedExerciseTable?.exerciseId))
+
+
         return NextResponse.json({
             ...result[0],
             chapters: chapterResult,
             userEnrolled:isEnrolledCourse,
-            courseEnrolledInfo:enrolledCourse[0]
+            courseEnrolledInfo:enrolledCourse[0],
+            completedExercises:completedExercises
         });
     }
     else{

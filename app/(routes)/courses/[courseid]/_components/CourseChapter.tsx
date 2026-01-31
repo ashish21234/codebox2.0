@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/tooltip"
 import { Skeleton } from '@/components/ui/skeleton'
 import { Button } from '@/components/ui/button'
+import { is } from 'drizzle-orm'
 
 type Props = {
   loading: boolean,
@@ -20,6 +21,36 @@ type Props = {
 }
 
 function CourseChapter({ loading, courseDetail }: Props) {
+
+  const EnableExercise = (
+    chapterIndex: number,
+    exerciseIndex: number,
+    chapterExercisesLength: number
+  ) => {
+    const completed = courseDetail?.completedExercises;
+  
+    // If nothing is completed, enable FIRST exercise ONLY
+    if (!completed || completed.length === 0) {
+      return chapterIndex === 0 && exerciseIndex === 0;
+    }
+  
+    // last completed
+    const last = completed[completed.length - 1];
+  
+    // Convert to global exercise number
+    const currentExerciseNumber =
+      chapterIndex * chapterExercisesLength + exerciseIndex + 1;
+  
+    const lastCompletedNumber =
+      (last.chapterId - 1) * chapterExercisesLength + last.exerciseId;
+  
+    return currentExerciseNumber === lastCompletedNumber + 2;
+  };
+  const isExerciseCompleted=(chapterId:number,exerciseId:number)=>{
+      const completeChapters=courseDetail?.completedExercises;
+      const completeChapter = completeChapters?.find(item=>(item.chapterId==chapterId && item.exerciseId==exerciseId))
+      return completeChapter?true:false
+  }
   return (
     <div>
       {loading || !courseDetail?.chapters || courseDetail.chapters.length === 0 ? (
@@ -47,8 +78,13 @@ function CourseChapter({ loading, courseDetail }: Props) {
                     <h2 className='text-3xl'>{exc.name}</h2>
 
                   </div>
-                  {/*<Button variant={'pixel'}>{exc?.xp} xp</Button>*/
                   
+                 {EnableExercise(index,indexExc,chapter?.exercises?.length)?
+                 <Button variant={'pixel'}>{exc?.xp} xp</Button>
+                  :
+                  isExerciseCompleted(chapter?.chapterId,indexExc+1)?
+                  <Button variant={'pixel'} className='bg-green-600'>Completed</Button>
+                  :
                   <Tooltip>
                       <TooltipTrigger asChild>
                       <Button variant={'pixelDisabled'}>???</Button>
