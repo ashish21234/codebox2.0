@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/navigation-menu"
 import Link from 'next/link'
 import { UserButton, useUser, SignedIn, SignedOut } from '@clerk/nextjs'
+import { useParams, usePathname } from 'next/navigation'
 const courses = [
   {
     id: 1,
@@ -72,13 +73,15 @@ const courses = [
 ];
 function Header() {
   const {user} = useUser();
+  const path = usePathname();
+  const {exerciseslug}=useParams();
   return (
-    <div className="p-4 max-w-7xl flex justify-between w-full items-center">
+    <div className="p-4 max-w-7xl flex justify-between w-full items-center font-game">
       <div className='flex gap-2 items-center'>
         <Image src={"/logo.png"} alt="Logo" width={40} height={40} />
       <h2 className='font-bold text-3xl font-game'>CodeBox  </h2>
       </div>
-      <NavigationMenu>
+      {!exerciseslug ? <NavigationMenu>
   <NavigationMenuList className='gap-8'>
     <NavigationMenuItem>
       <NavigationMenuTrigger>Courses</NavigationMenuTrigger>
@@ -105,7 +108,9 @@ function Header() {
         <Link href={'/Contact-us'}>Contact Us</Link>
     </NavigationMenuLink>
   </NavigationMenuList>
-</NavigationMenu>
+</NavigationMenu>:
+<h2 className='text-2xl'>{exerciseslug?.toString()?.replaceAll('-', ' ').toLocaleUpperCase()}</h2>
+}
       {!user ? 
       <Link href={'/sign-in'}>
       <Button className='font-game text-2xl' variant={'pixel'}>Signup</Button> </Link>
