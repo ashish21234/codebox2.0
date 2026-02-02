@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/tooltip"
 import { Skeleton } from '@/components/ui/skeleton'
 import { Button } from '@/components/ui/button'
-import { is } from 'drizzle-orm'
+import Link from 'next/link'
 
 type Props = {
   loading: boolean,
@@ -80,7 +80,9 @@ function CourseChapter({ loading, courseDetail }: Props) {
                   </div>
                   
                  {EnableExercise(index,indexExc,chapter?.exercises?.length)?
+                 <Link href={'/courses/'+courseDetail?.courseId+'/'+(chapter?.chapterId ?? chapter?.id ?? (index + 1))+'/'+exc?.slug}>
                  <Button variant={'pixel'}>{exc?.xp} xp</Button>
+                 </Link>
                   :
                   isExerciseCompleted(chapter?.chapterId,indexExc+1)?
                   <Button variant={'pixel'} className='bg-green-600'>Completed</Button>

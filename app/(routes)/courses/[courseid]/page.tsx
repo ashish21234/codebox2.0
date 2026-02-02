@@ -26,7 +26,7 @@ export default function CourseDetail() {
     }
     
   return (
-    <div><CourseDetailBanner loading={loading} courseDetail={courseDetail}/>
+    <div><CourseDetailBanner loading={loading} courseDetail={courseDetail} refreshData={()=>GetCourseDetail()}/>
     <div className='grid grid-cols-3 p-10 md:px-24 lg:px-36 gap-7'>
       <div className='col-span-2'>
         <CourseChapter loading={loading} courseDetail={courseDetail}/>
