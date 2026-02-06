@@ -1,7 +1,7 @@
 import React from 'react'
 import { CourseExercise } from '../page'
 import { Skeleton } from '@/components/ui/skeleton'
-import { Lightbulb } from 'lucide-react'
+import { ChartPie, Lightbulb, Pi, PiIcon } from 'lucide-react'
 
 
 type Props={
@@ -11,7 +11,7 @@ type Props={
 function ContentSection({courseExerciseData,loading}:Props) {
   const ContentInfo=courseExerciseData?.exerciseData;
   return (
-    <div className='p-10'>
+    <div className='p-10 mb-28'>
       {loading || !ContentInfo?
     <Skeleton className='h-full w-full m-10 rounded-2xl'  />
     :
@@ -19,7 +19,7 @@ function ContentSection({courseExerciseData,loading}:Props) {
       <h2 className='font-game text-3xl my-3'>{courseExerciseData.exerciseData.exerciseName}</h2>
     <div dangerouslySetInnerHTML={{__html:ContentInfo?.exerciseContent?.content}}/>
     <div>
-      <h2 className='font-game text-3xl mt-4'>Task</h2>
+      <h2 className='font-game text-3xl mt-4 flex gap-2 items-center'><ChartPie/>Task</h2>
       <div  className='p-4 border rounded-2xl bg-zinc-800'dangerouslySetInnerHTML={{__html:ContentInfo?.exerciseContent?.task}}/>
       </div>
       <div>
