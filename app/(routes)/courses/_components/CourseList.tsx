@@ -42,7 +42,11 @@ export type exercise={
         xp:number,
         difficulty:string
 }
-function CourseList() {
+type Props={
+    smallerCard?:boolean,
+    maxLimit?:number
+}
+function CourseList({smallerCard=false,maxLimit=100}:Props) {
     const [courseList,setCourseList]=useState<Course[]>([])
     const [loading,setLoading]=useState(false);
     useEffect(()=>{
@@ -64,7 +68,7 @@ function CourseList() {
   return (
     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-5 mt-3'>
         {loading && <p>Loading courses...</p>}
-        {!loading && courseList?.map((course: Course,index: number)=>(
+        {!loading && courseList?.map((course: Course,index: number)=>maxLimit && maxLimit>index &&(
             <Link href={'/courses/'+course?.courseId} key={index}>
             <div className='border-4 rounded-xl hover:bg-zinc-900 cursor-pointer'>
                 <Image 
@@ -72,7 +76,7 @@ function CourseList() {
                     width={400} 
                     height={400} 
                     alt={course.title}
-                    className='w-full h-[200px]  object-cover rounded-t-lg'
+                    className={`w-full ${smallerCard?' h-[120px]': 'h-[200px]'}  object-cover rounded-t-lg`}
                 />
                 <div className='p-4'>
                     <h2 className='font-game text-2xl'>{course?.title}</h2>

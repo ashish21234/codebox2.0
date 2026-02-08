@@ -59,7 +59,8 @@ const CodeEditorChildren=({onCompletedExercise,isCompleted}:any)=>{
   return (
     
     <SandpackProvider
-      template="static"
+    //@ts-ignore
+      template={courseExerciseData?.editorType??'static'}
       customSetup={{ entry: "/index.html" }}
       files={files}
       style={{ height: "100vh" }}
