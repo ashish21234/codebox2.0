@@ -15,9 +15,8 @@ export const CourseTable = pgTable("courses", {
   desc: varchar().notNull(),
   bannerImage: varchar().notNull(),
   level:varchar().default('Beginner'),
-  tags: varchar()
-
-
+  tags: varchar(),
+  editorType:varchar()
 })
 
 export const CourseChaptersTable = pgTable('courseChapters',{
@@ -45,7 +44,7 @@ export const CompletedExerciseTable=pgTable('completedExercise',{
   id:integer().primaryKey().generatedAlwaysAsIdentity(),
   courseId:integer(),
   chapterId:integer(),
-  exerciseId:integer(),
+  exerciseId:varchar(),
   userId:varchar(),
   
 })

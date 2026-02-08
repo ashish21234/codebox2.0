@@ -1,5 +1,6 @@
 import EnrolledCourses from '@/app/_components/EnrolledCourses';
 import ExploreMore from '@/app/_components/ExploreMore';
+import ExploreMoreCourses from '@/app/_components/ExploreMoreCourses';
 import InviteFriend from '@/app/_components/InviteFriend';
 import UpgradeToPro from '@/app/_components/UpgradeToPro';
 import UserStatus from '@/app/_components/UserStatus';
@@ -13,6 +14,7 @@ function DashBoard() {
         <div className='col-span-2'>
              <WelcomeBanner/>
              <EnrolledCourses/>
+             <ExploreMoreCourses/>
              <ExploreMore/>
              <InviteFriend/>
         </div>
