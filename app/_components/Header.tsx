@@ -35,15 +35,18 @@ useEffect(()=>{
   return (
     <div className="p-4 max-w-7xl flex justify-between w-full items-center font-game">
       <div className='flex gap-2 items-center'>
+        
         <Image src={"/logo.png"} alt="Logo" width={40} height={40} />
+        <Link href={'/'}>
       <h2 className='font-bold text-3xl font-game'>CodeBox  </h2>
+        </Link>
       </div>
       {!exerciseslug&&courses ? <NavigationMenu>
   <NavigationMenuList className='gap-8'>
     <NavigationMenuItem>
-      <NavigationMenuTrigger>Courses</NavigationMenuTrigger>
+      <NavigationMenuTrigger className='text-xl'>Courses</NavigationMenuTrigger>
       <NavigationMenuContent>
-        <ul className='grid grid-cols-2 gap-2 w-80 md:w-96'>
+        <ul className='grid grid-cols-2 gap-2 w-80 md:w-96 text-xl'>
             {courses.map((course,index)=>(
                 <Link href={'/courses/'+course?.courseId} key={index}>
                   <div className='p-2 hover:bg-accent rounded-xl cursor-pointer'>
@@ -55,13 +58,13 @@ useEffect(()=>{
         </ul>
       </NavigationMenuContent>
     </NavigationMenuItem>
-    <NavigationMenuLink asChild>
+    <NavigationMenuLink asChild className='text-xl'>
         <Link href={'/projects'}>Projects</Link>
     </NavigationMenuLink>
-    <NavigationMenuLink asChild>
+    <NavigationMenuLink asChild className='text-xl'>
         <Link href={'/pricing'}>Pricing</Link>
     </NavigationMenuLink>
-    <NavigationMenuLink asChild>
+    <NavigationMenuLink asChild className='text-xl'>
         <Link href={'/Contact-us'}>Contact Us</Link>
     </NavigationMenuLink>
   </NavigationMenuList>
@@ -71,7 +74,9 @@ useEffect(()=>{
       {!user ? 
       <Link href={'/sign-in'}>
       <Button className='font-game text-2xl' variant={'pixel'}>Signup</Button> </Link>
-      :<div className='flex items-center gap-4'> <Button className='font-game text-2xl px-4 py-2' variant={'pixel'}>Dashboard</Button>
+      :<div className='flex items-center gap-4'>
+      <Link href={'/dashboard'}>
+      <Button className='font-game text-2xl px-4 py-2' variant={'pixel'}>Dashboard</Button></Link>
       <UserButton />
       </div>}
     </div>

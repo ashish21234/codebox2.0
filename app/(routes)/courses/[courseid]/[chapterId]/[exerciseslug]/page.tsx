@@ -19,6 +19,17 @@ import Link from 'next/link';
   desc:string,
   name:string,
   exercises:exercise[],
+
+   prevChapter?: {
+    chapterId: number;
+    exercises: exercise[];
+  };
+
+  nextChapter?: {
+    chapterId: number;
+    exercises: exercise[];
+  };
+
   exerciseData:ExerciseData,
   completedExercise:CompletedExercises[]
 
@@ -49,11 +60,12 @@ const [CourseExerciseData,setCourseExerciseData]=useState<CourseExercise>();
 const [nextButtonRoute,setNextButtonRoute]=useState<string>();
 const [prevButtonRoute,setPrevButtonRoute]=useState<string>();
 
+useEffect(() => {
+  if (courseid && chapterId && exerciseslug) {
+    GetExerciseCourseDetail();
+  }
+}, [courseid, chapterId, exerciseslug]);
 
-useEffect(()=>{
-  GetExerciseCourseDetail();
-},[])
-  
 
 const GetExerciseCourseDetail = async () => {
   setLoading(true);
@@ -68,22 +80,57 @@ const GetExerciseCourseDetail = async () => {
 }
 
 
-useEffect(()=>{
-  CourseExerciseData&&GetExerciseDetail();
-  CourseExerciseData&&GetPreviousButton();
-},[CourseExerciseData])
+useEffect(() => {
+  if (!CourseExerciseData) return;
+
+  GetExerciseDetail();
+  GetNavigationButtons();
+}, [CourseExerciseData, exerciseslug]);
 
 
 
-const GetPreviousButton=()=>{
-  const currentexerciseIndex=CourseExerciseData?.exercises?.findIndex(item=>item.slug==exerciseslug)??0;
-  
-  const NextExercises=CourseExerciseData?.exercises[currentexerciseIndex+1]?.slug;
-  const PrevExercises=CourseExerciseData?.exercises[currentexerciseIndex-1]?.slug;
-  console.log(NextExercises,PrevExercises);
-  setNextButtonRoute(NextExercises?'/courses/'+courseid+'/'+chapterId+'/'+NextExercises:undefined);
-  setPrevButtonRoute(PrevExercises?'/courses/'+courseid+'/'+chapterId+'/'+PrevExercises:undefined);
-}
+
+const GetNavigationButtons = () => {
+  if (!CourseExerciseData) return;
+
+  const { exercises, prevChapter, nextChapter } = CourseExerciseData;
+
+  const currentIndex = exercises.findIndex(
+    (item) => item.slug === exerciseslug
+  );
+
+  /* ---------- PREVIOUS ---------- */
+  if (currentIndex > 0) {
+    setPrevButtonRoute(
+      `/courses/${courseid}/${chapterId}/${exercises[currentIndex - 1].slug}`
+    );
+  } else if (prevChapter && prevChapter.exercises.length > 0) {
+    const lastExercise =
+      prevChapter.exercises[prevChapter.exercises.length - 1];
+
+    setPrevButtonRoute(
+      `/courses/${courseid}/${prevChapter.chapterId}/${lastExercise.slug}`
+    );
+  } else {
+    setPrevButtonRoute(`/courses/${courseid}`);
+  }
+
+  /* ---------- NEXT ---------- */
+  if (currentIndex < exercises.length - 1) {
+    setNextButtonRoute(
+      `/courses/${courseid}/${chapterId}/${exercises[currentIndex + 1].slug}`
+    );
+  } else if (nextChapter && nextChapter.exercises.length > 0) {
+    const firstExercise = nextChapter.exercises[0];
+
+    setNextButtonRoute(
+      `/courses/${courseid}/${nextChapter.chapterId}/${firstExercise.slug}`
+    );
+  } else {
+    setNextButtonRoute(undefined); // course finished
+  }
+};
+
 
 
 const GetExerciseDetail=()=>{

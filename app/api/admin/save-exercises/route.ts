@@ -3,115 +3,116 @@ import { ExerciseTable } from "@/config/schema";
 import { NextRequest, NextResponse } from "next/server";
 
 const DATA =[
-    {
-      "courseId": 2,
-      "exerciseId": "explore-the-web-skeleton",
-      "exerciseName": "Explore the Web Skeleton",
-      "chapterId": 1,
-      "exercisesContent": {
-        "content": "<body style=\"font-family:Arial,sans-serif;line-height:1.6;padding:20px;color:#e5e7eb;\"><p style=\"margin-bottom:8px;\">Welcome, brave explorer! Your journey begins by discovering the <strong>web skeleton</strong>. Every web page is built on the foundation of HTML.</p><p style=\"margin-bottom:8px;\">The <code>&lt;!DOCTYPE html&gt;</code> declaration tells the browser the document type and prepares it for modern rendering.</p><p style=\"margin-bottom:8px;\">The outer wrapper <code>&lt;html&gt;</code> contains everything on the page, like the walls of a fortress.</p><p style=\"margin-bottom:8px;\">Inside the fortress, the <code>&lt;head&gt;</code> stores tools like the title and meta data.</p><p style=\"margin-bottom:8px;\">The <code>&lt;body&gt;</code> is the open field where your content appears.</p><p style=\"margin-bottom:8px;\">Browsers read HTML from top to bottom, so order matters.</p><p style=\"margin-bottom:8px;\">A broken skeleton leads to broken pages.</p><p style=\"margin-bottom:8px;\">Learning this structure is your first power-up.</p><p style=\"margin-bottom:8px;\">Once mastered, styling and logic become easier.</p><p style=\"margin-bottom:8px;\">This is the base of every website.</p><p style=\"margin-bottom:8px;\">Train your eyes to recognize these tags.</p><p style=\"margin-bottom:8px;\">Your adventure starts now.</p></body>",
-        "task": "<body style=\"font-family:Arial,sans-serif;padding:10px;color:#e5e7eb;\"><p>Create a complete HTML skeleton including <code>&lt;!DOCTYPE html&gt;</code>, <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code>, and <code>&lt;body&gt;</code>. Inside body write: <strong>My first web skeleton is ready!</strong></p></body>",
-        "hint": "<body style=\"font-family:Arial,sans-serif;padding:10px;color:#e5e7eb;\"><p>Start with <code>&lt;!DOCTYPE html&gt;</code>. The head comes before the body, both inside html.</p></body>",
-        "starterCode": {
-          "filename": "/index.html",
-          "code": "<!DOCTYPE html>\n<html>\n  <head>\n    <title></title>\n  </head>\n  <body>\n\n  </body>\n</html>"
-        },
-        "regex": "<!DOCTYPE html>[\\s\\S]*<body>[\\s\\S]*My first web skeleton is ready![\\s\\S]*</body>",
-        "output": "My first web skeleton is ready!",
-        "hintXp": 30
-      }
-    },
-    {
-      "courseId": 2,
-      "exerciseId": "build-your-base-camp",
-      "exerciseName": "Build Your Base Camp",
-      "chapterId": 1,
-      "exercisesContent": {
-        "content": "<body style=\"font-family:Arial,sans-serif;line-height:1.6;padding:20px;color:#e5e7eb;\"><p style=\"margin-bottom:8px;\">Every adventurer needs a base camp.</p><p style=\"margin-bottom:8px;\">In HTML, your base camp lives inside the body.</p><p style=\"margin-bottom:8px;\">Headings act like flags showing importance.</p><p style=\"margin-bottom:8px;\">Paragraphs store your notes and stories.</p><p style=\"margin-bottom:8px;\">The <code>&lt;h1&gt;</code> tag is your main banner.</p><p style=\"margin-bottom:8px;\">The <code>&lt;p&gt;</code> tag holds readable content.</p><p style=\"margin-bottom:8px;\">Together they create structure.</p><p style=\"margin-bottom:8px;\">Good structure improves readability.</p><p style=\"margin-bottom:8px;\">Browsers and users love clarity.</p><p style=\"margin-bottom:8px;\">This camp is where future quests begin.</p><p style=\"margin-bottom:8px;\">A strong base supports expansion.</p><p style=\"margin-bottom:8px;\">Plant your flag now.</p></body>",
-        "task": "<body style=\"font-family:Arial,sans-serif;padding:10px;color:#e5e7eb;\"><p>Inside the body, add an <code>&lt;h1&gt;</code> with text <strong>Welcome to Base Camp</strong> and a <code>&lt;p&gt;</code> with text <strong>Prepare yourself for the HTML adventure!</strong>.</p></body>",
-        "hint": "<body style=\"font-family:Arial,sans-serif;padding:10px;color:#e5e7eb;\"><p>Use one <code>&lt;h1&gt;</code> and one <code>&lt;p&gt;</code>, both inside body.</p></body>",
-        "starterCode": {
-          "filename": "/index.html",
-          "code": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Base Camp</title>\n  </head>\n  <body>\n\n  </body>\n</html>"
-        },
-        "regex": "<h1>\\s*Welcome to Base Camp\\s*</h1>[\\s\\S]*<p>\\s*Prepare yourself for the HTML adventure!\\s*</p>",
-        "output": "<h1>Welcome to Base Camp</h1><p>Prepare yourself for the HTML adventure!</p>",
-        "hintXp": 35
-      }
-    },
-    {
-      "courseId": 2,
-      "exerciseId": "name-your-world",
-      "exerciseName": "Name Your World",
-      "chapterId": 1,
-      "exercisesContent": {
-        "content": "<body style=\"font-family:Arial,sans-serif;line-height:1.6;padding:20px;color:#e5e7eb;\"><p style=\"margin-bottom:8px;\">Every world needs a name.</p><p style=\"margin-bottom:8px;\">In HTML, the name lives in the title tag.</p><p style=\"margin-bottom:8px;\">The title appears in browser tabs.</p><p style=\"margin-bottom:8px;\">It also helps search engines.</p><p style=\"margin-bottom:8px;\">Titles should be clear and meaningful.</p><p style=\"margin-bottom:8px;\">They belong inside the head.</p><p style=\"margin-bottom:8px;\">Never place title in body.</p><p style=\"margin-bottom:8px;\">A good title improves professionalism.</p><p style=\"margin-bottom:8px;\">Small detail, big impact.</p><p style=\"margin-bottom:8px;\">This defines your page identity.</p><p style=\"margin-bottom:8px;\">Name wisely.</p><p style=\"margin-bottom:8px;\">Your world is remembered by its title.</p></body>",
-        "task": "<body style=\"font-family:Arial,sans-serif;padding:10px;color:#e5e7eb;\"><p>Set the page <code>&lt;title&gt;</code> to <strong>My Adventure World</strong> inside the head.</p></body>",
-        "hint": "<body style=\"font-family:Arial,sans-serif;padding:10px;color:#e5e7eb;\"><p>The title must be inside <code>&lt;head&gt;</code>, not body.</p></body>",
-        "starterCode": {
-          "filename": "/index.html",
-          "code": "<!DOCTYPE html>\n<html>\n  <head>\n    <title></title>\n  </head>\n  <body>\n  </body>\n</html>"
-        },
-        "regex": "<title>\\s*My Adventure World\\s*</title>",
-        "output": "<title>My Adventure World</title>",
-        "hintXp": 30
-      }
-    },
-    {
-      "courseId": 2,
-      "exerciseId": "break-and-repair",
-      "exerciseName": "Break & Repair",
-      "chapterId": 1,
-      "exercisesContent": {
-        "content": "<body style=\"font-family:Arial,sans-serif;line-height:1.6;padding:20px;color:#e5e7eb;\"><p style=\"margin-bottom:8px;\">Even strong structures can crack.</p><p style=\"margin-bottom:8px;\">HTML errors often come from missing tags.</p><p style=\"margin-bottom:8px;\">Unclosed tags confuse browsers.</p><p style=\"margin-bottom:8px;\">Nesting tags incorrectly breaks layout.</p><p style=\"margin-bottom:8px;\">Your job is to repair the damage.</p><p style=\"margin-bottom:8px;\">Every opening tag needs a closing tag.</p><p style=\"margin-bottom:8px;\">Order matters in nesting.</p><p style=\"margin-bottom:8px;\">Fixing HTML improves reliability.</p><p style=\"margin-bottom:8px;\">Debugging is a core skill.</p><p style=\"margin-bottom:8px;\">This mission sharpens attention.</p><p style=\"margin-bottom:8px;\">Clean code equals strong pages.</p><p style=\"margin-bottom:8px;\">Repair and move forward.</p></body>",
-        "task": "<body style=\"font-family:Arial,sans-serif;padding:10px;color:#e5e7eb;\"><p>Fix the broken HTML so the heading <strong>Mission Complete</strong> and paragraph <strong>All tags repaired.</strong> display correctly.</p></body>",
-        "hint": "<body style=\"font-family:Arial,sans-serif;padding:10px;color:#e5e7eb;\"><p>Check for missing closing tags.</p></body>",
-        "starterCode": {
-          "filename": "/index.html",
-          "code": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Repair</title>\n  </head>\n  <body>\n    <h1>Mission Complete\n    <p>All tags repaired.</p>\n  </body>\n</html>"
-        },
-        "regex": "<h1>\\s*Mission Complete\\s*</h1>[\\s\\S]*<p>\\s*All tags repaired.\\s*</p>",
-        "output": "<h1>Mission Complete</h1><p>All tags repaired.</p>",
-        "hintXp": 40
-      }
-    },
-    {
-      "courseId": 2,
-      "exerciseId": "html-detective",
-      "exerciseName": "HTML Detective",
-      "chapterId": 1,
-      "exercisesContent": {
-        "content": "<body style=\"font-family:Arial,sans-serif;line-height:1.6;padding:20px;color:#e5e7eb;\"><p style=\"margin-bottom:8px;\">Put on your detective hat.</p><p style=\"margin-bottom:8px;\">HTML elements each have roles.</p><p style=\"margin-bottom:8px;\">Headings define importance.</p><p style=\"margin-bottom:8px;\">Paragraphs hold information.</p><p style=\"margin-bottom:8px;\">Lists organize data.</p><p style=\"margin-bottom:8px;\">Images show visuals.</p><p style=\"margin-bottom:8px;\">Links connect pages.</p><p style=\"margin-bottom:8px;\">Detecting correct tags matters.</p><p style=\"margin-bottom:8px;\">Wrong tags confuse users.</p><p style=\"margin-bottom:8px;\">Semantic HTML improves meaning.</p><p style=\"margin-bottom:8px;\">This skill grows with practice.</p><p style=\"margin-bottom:8px;\">Observe carefully.</p></body>",
-        "task": "<body style=\"font-family:Arial,sans-serif;padding:10px;color:#e5e7eb;\"><p>Add an ordered list with three items: <strong>Inspect</strong>, <strong>Analyze</strong>, <strong>Solve</strong>.</p></body>",
-        "hint": "<body style=\"font-family:Arial,sans-serif;padding:10px;color:#e5e7eb;\"><p>Use <code>&lt;ol&gt;</code> and <code>&lt;li&gt;</code>.</p></body>",
-        "starterCode": {
-          "filename": "/index.html",
-          "code": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Detective</title>\n  </head>\n  <body>\n  </body>\n</html>"
-        },
-        "regex": "<ol>[\\s\\S]*<li>Inspect</li>[\\s\\S]*<li>Analyze</li>[\\s\\S]*<li>Solve</li>[\\s\\S]*</ol>",
-        "output": "<ol><li>Inspect</li><li>Analyze</li><li>Solve</li></ol>",
-        "hintXp": 45
-      }
-    },
-    {
-      "courseId": 2,
-      "exerciseId": "element-collector",
-      "exerciseName": "Element Collector",
-      "chapterId": 1,
-      "exercisesContent": {
-        "content": "<body style=\"font-family:Arial,sans-serif;line-height:1.6;padding:20px;color:#e5e7eb;\"><p style=\"margin-bottom:8px;\">Time to collect elements.</p><p style=\"margin-bottom:8px;\">HTML is built from many tags.</p><p style=\"margin-bottom:8px;\">Each tag has a purpose.</p><p style=\"margin-bottom:8px;\">Images use the <code>&lt;img&gt;</code> tag.</p><p style=\"margin-bottom:8px;\">Links use the <code>&lt;a&gt;</code> tag.</p><p style=\"margin-bottom:8px;\">Attributes add extra power.</p><p style=\"margin-bottom:8px;\">src and href are common.</p><p style=\"margin-bottom:8px;\">Collecting elements builds mastery.</p><p style=\"margin-bottom:8px;\">Practice improves memory.</p><p style=\"margin-bottom:8px;\">This is your loot phase.</p><p style=\"margin-bottom:8px;\">Every element counts.</p><p style=\"margin-bottom:8px;\">Fill your inventory.</p></body>",
-        "task": "<body style=\"font-family:Arial,sans-serif;padding:10px;color:#e5e7eb;\"><p>Add a link using <code>&lt;a&gt;</code> that points to <strong>https://example.com</strong> with text <strong>Visit Example</strong>.</p></body>",
-        "hint": "<body style=\"font-family:Arial,sans-serif;padding:10px;color:#e5e7eb;\"><p>Use the <code>href</code> attribute.</p></body>",
-        "starterCode": {
-          "filename": "/index.html",
-          "code": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Collector</title>\n  </head>\n  <body>\n  </body>\n</html>"
-        },
-        "regex": "<a\\s+href=\"https://example.com\">\\s*Visit Example\\s*</a>",
-        "output": "<a href=\"https://example.com\">Visit Example</a>",
-        "hintXp": 50
-      }
+  {
+    "courseId": 2,
+    "exerciseId": "build-the-core-structure",
+    "exerciseName": "Build the Core Structure",
+    "chapterId": 2,
+    "exercisesContent": {
+      "content": "<body style=\"font-family:Arial,sans-serif;line-height:1.7;padding:20px;color:#e5e7eb;\"><p style=\"margin-bottom:8px;\">Every powerful website begins with a solid core structure.</p><p style=\"margin-bottom:8px;\">The HTML boilerplate is the foundation that browsers rely on to correctly interpret your page.</p><p style=\"margin-bottom:8px;\">It starts by clearly declaring the document type using <code>&lt;!DOCTYPE html&gt;</code>.</p><p style=\"margin-bottom:8px;\">The <code>&lt;html&gt;</code> tag wraps your entire application and defines the root of the document.</p><p style=\"margin-bottom:8px;\">Inside it, the <code>&lt;head&gt;</code> stores configuration data and page identity.</p><p style=\"margin-bottom:8px;\">The <code>&lt;body&gt;</code> is where all visible content will eventually live.</p><p style=\"margin-bottom:8px;\">Browsers expect this structure and may behave unpredictably without it.</p><p style=\"margin-bottom:8px;\">A clean boilerplate improves compatibility across devices.</p><p style=\"margin-bottom:8px;\">Professional developers never skip this step.</p><p style=\"margin-bottom:8px;\">This exercise trains you to write the structure from memory.</p><p style=\"margin-bottom:8px;\">Think of it as assembling the blueprint of your digital building.</p><p style=\"margin-bottom:8px;\">Once complete, you are ready to add more advanced features.</p></body>",
+      "task": "<body style=\"font-family:Arial,sans-serif;padding:12px;color:#e5e7eb;\"><p>Create a complete HTML boilerplate from scratch. Include <code>&lt;!DOCTYPE html&gt;</code>, <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code>, and <code>&lt;body&gt;</code>. Leave the head and body empty for now.</p></body>",
+      "hint": "<body style=\"font-family:Arial,sans-serif;padding:12px;color:#e5e7eb;\"><p>The correct order is DOCTYPE → html → head → body.</p></body>",
+      "starterCode": {
+        "filename": "/index.html",
+        "code": "<!DOCTYPE html>\n<html>\n\n</html>"
+      },
+      "regex": "<!DOCTYPE html>[\\s\\S]*<html>[\\s\\S]*<head>[\\s\\S]*</head>[\\s\\S]*<body>[\\s\\S]*</body>[\\s\\S]*</html>",
+      "output": "Valid HTML core structure created",
+      "hintXp": 35
     }
-  ];
+  },
+  {
+    "courseId": 2,
+    "exerciseId": "fix-the-broken-blueprint",
+    "exerciseName": "Fix the Broken Blueprint",
+    "chapterId": 2,
+    "exercisesContent": {
+      "content": "<body style=\"font-family:Arial,sans-serif;line-height:1.7;padding:20px;color:#e5e7eb;\"><p style=\"margin-bottom:8px;\">Even the best blueprints can be damaged.</p><p style=\"margin-bottom:8px;\">Broken HTML often comes from missing or misplaced tags.</p><p style=\"margin-bottom:8px;\">Browsers try to guess your intent, but mistakes cause layout issues.</p><p style=\"margin-bottom:8px;\">Unclosed tags are one of the most common errors.</p><p style=\"margin-bottom:8px;\">Incorrect nesting breaks structure and meaning.</p><p style=\"margin-bottom:8px;\">Debugging HTML is a vital real-world skill.</p><p style=\"margin-bottom:8px;\">This exercise simulates fixing a faulty blueprint.</p><p style=\"margin-bottom:8px;\">You must carefully inspect opening and closing tags.</p><p style=\"margin-bottom:8px;\">Attention to detail is the key to success.</p><p style=\"margin-bottom:8px;\">Clean markup improves maintainability.</p><p style=\"margin-bottom:8px;\">Once repaired, the page becomes predictable.</p><p style=\"margin-bottom:8px;\">Fix the errors and restore balance.</p></body>",
+      "task": "<body style=\"font-family:Arial,sans-serif;padding:12px;color:#e5e7eb;\"><p>Repair the broken HTML so that both the heading and paragraph display correctly. Ensure all tags are properly closed and nested.</p></body>",
+      "hint": "<body style=\"font-family:Arial,sans-serif;padding:12px;color:#e5e7eb;\"><p>Check if every opening tag has a matching closing tag.</p></body>",
+      "starterCode": {
+        "filename": "/index.html",
+        "code": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Broken</title>\n  </head>\n  <body>\n    <h1>Blueprint Fixed\n    <p>Structure restored\n  </body>\n</html>"
+      },
+      "regex": "<h1>\\s*Blueprint Fixed\\s*</h1>[\\s\\S]*<p>\\s*Structure restored\\s*</p>",
+      "output": "<h1>Blueprint Fixed</h1><p>Structure restored</p>",
+      "hintXp": 40
+    }
+  },
+  {
+    "courseId": 2,
+    "exerciseId": "boost-meta-power",
+    "exerciseName": "Boost Meta Power",
+    "chapterId": 2,
+    "exercisesContent": {
+      "content": "<body style=\"font-family:Arial,sans-serif;line-height:1.7;padding:20px;color:#e5e7eb;\"><p style=\"margin-bottom:8px;\">Meta tags give hidden power to your webpage.</p><p style=\"margin-bottom:8px;\">They communicate information to browsers and search engines.</p><p style=\"margin-bottom:8px;\">The charset meta tag defines text encoding.</p><p style=\"margin-bottom:8px;\">Without it, characters may display incorrectly.</p><p style=\"margin-bottom:8px;\">Meta tags live inside the head.</p><p style=\"margin-bottom:8px;\">They do not appear visually on the page.</p><p style=\"margin-bottom:8px;\">Correct metadata improves reliability.</p><p style=\"margin-bottom:8px;\">UTF-8 is the modern standard encoding.</p><p style=\"margin-bottom:8px;\">This ensures global character support.</p><p style=\"margin-bottom:8px;\">Professional pages always define charset.</p><p style=\"margin-bottom:8px;\">This is a silent but critical upgrade.</p><p style=\"margin-bottom:8px;\">Power up your document now.</p></body>",
+      "task": "<body style=\"font-family:Arial,sans-serif;padding:12px;color:#e5e7eb;\"><p>Add a meta charset tag using <code>UTF-8</code> inside the head section.</p></body>",
+      "hint": "<body style=\"font-family:Arial,sans-serif;padding:12px;color:#e5e7eb;\"><p>Use <code>&lt;meta charset=\"UTF-8\"&gt;</code>.</p></body>",
+      "starterCode": {
+        "filename": "/index.html",
+        "code": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Meta Power</title>\n  </head>\n  <body>\n  </body>\n</html>"
+      },
+      "regex": "<meta\\s+charset=\"UTF-8\"\\s*/?>",
+      "output": "<meta charset=\"UTF-8\">",
+      "hintXp": 30
+    }
+  },
+  {
+    "courseId": 2,
+    "exerciseId": "add-language-identity",
+    "exerciseName": "Add Language Identity",
+    "chapterId": 2,
+    "exercisesContent": {
+      "content": "<body style=\"font-family:Arial,sans-serif;line-height:1.7;padding:20px;color:#e5e7eb;\"><p style=\"margin-bottom:8px;\">Every document should declare its language.</p><p style=\"margin-bottom:8px;\">Language identity improves accessibility.</p><p style=\"margin-bottom:8px;\">Screen readers rely on this information.</p><p style=\"margin-bottom:8px;\">Search engines use it for localization.</p><p style=\"margin-bottom:8px;\">The language attribute belongs on the html tag.</p><p style=\"margin-bottom:8px;\">English pages commonly use <code>lang=\"en\"</code>.</p><p style=\"margin-bottom:8px;\">This small attribute has a big impact.</p><p style=\"margin-bottom:8px;\">It improves SEO and usability.</p><p style=\"margin-bottom:8px;\">Professional pages always define language.</p><p style=\"margin-bottom:8px;\">This helps assistive technologies.</p><p style=\"margin-bottom:8px;\">Your page now speaks clearly.</p><p style=\"margin-bottom:8px;\">Give your document an identity.</p></body>",
+      "task": "<body style=\"font-family:Arial,sans-serif;padding:12px;color:#e5e7eb;\"><p>Add a language attribute to the <code>&lt;html&gt;</code> tag and set it to English.</p></body>",
+      "hint": "<body style=\"font-family:Arial,sans-serif;padding:12px;color:#e5e7eb;\"><p>Use <code>&lt;html lang=\"en\"&gt;</code>.</p></body>",
+      "starterCode": {
+        "filename": "/index.html",
+        "code": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Language</title>\n  </head>\n  <body>\n  </body>\n</html>"
+      },
+      "regex": "<html\\s+lang=\"en\">",
+      "output": "<html lang=\"en\">",
+      "hintXp": 30
+    }
+  },
+  {
+    "courseId": 2,
+    "exerciseId": "viewport-setup",
+    "exerciseName": "Viewport Setup",
+    "chapterId": 2,
+    "exercisesContent": {
+      "content": "<body style=\"font-family:Arial,sans-serif;line-height:1.7;padding:20px;color:#e5e7eb;\"><p style=\"margin-bottom:8px;\">Modern users browse on many screen sizes.</p><p style=\"margin-bottom:8px;\">The viewport meta tag controls layout on mobile.</p><p style=\"margin-bottom:8px;\">Without it, pages may zoom incorrectly.</p><p style=\"margin-bottom:8px;\">Responsive design depends on viewport setup.</p><p style=\"margin-bottom:8px;\">This tag belongs in the head.</p><p style=\"margin-bottom:8px;\">It defines width and initial scale.</p><p style=\"margin-bottom:8px;\">Mobile-first design starts here.</p><p style=\"margin-bottom:8px;\">Every modern site uses this tag.</p><p style=\"margin-bottom:8px;\">It improves usability instantly.</p><p style=\"margin-bottom:8px;\">Ignoring this causes poor UX.</p><p style=\"margin-bottom:8px;\">One line unlocks responsiveness.</p><p style=\"margin-bottom:8px;\">Prepare your page for all devices.</p></body>",
+      "task": "<body style=\"font-family:Arial,sans-serif;padding:12px;color:#e5e7eb;\"><p>Add a viewport meta tag with width set to device-width and initial-scale set to 1.0.</p></body>",
+      "hint": "<body style=\"font-family:Arial,sans-serif;padding:12px;color:#e5e7eb;\"><p>Use <code>name=\"viewport\"</code> and <code>content=\"width=device-width, initial-scale=1.0\"</code>.</p></body>",
+      "starterCode": {
+        "filename": "/index.html",
+        "code": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <title>Viewport</title>\n  </head>\n  <body>\n  </body>\n</html>"
+      },
+      "regex": "<meta\\s+name=\"viewport\"\\s+content=\"width=device-width,\\s*initial-scale=1.0\"\\s*/?>",
+      "output": "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">",
+      "hintXp": 35
+    }
+  },
+  {
+    "courseId": 2,
+    "exerciseId": "author-credit",
+    "exerciseName": "Author Credit",
+    "chapterId": 2,
+    "exercisesContent": {
+      "content": "<body style=\"font-family:Arial,sans-serif;line-height:1.7;padding:20px;color:#e5e7eb;\"><p style=\"margin-bottom:8px;\">Every creation deserves a signature.</p><p style=\"margin-bottom:8px;\">Author metadata identifies who built the page.</p><p style=\"margin-bottom:8px;\">This information is useful for documentation.</p><p style=\"margin-bottom:8px;\">It can also help search engines.</p><p style=\"margin-bottom:8px;\">Author meta tags live in the head.</p><p style=\"margin-bottom:8px;\">They are invisible to users.</p><p style=\"margin-bottom:8px;\">Professional projects often include this.</p><p style=\"margin-bottom:8px;\">It adds ownership and clarity.</p><p style=\"margin-bottom:8px;\">This is a small but meaningful detail.</p><p style=\"margin-bottom:8px;\">You are claiming your work.</p><p style=\"margin-bottom:8px;\">Good habits start early.</p><p style=\"margin-bottom:8px;\">Sign your creation proudly.</p></body>",
+      "task": "<body style=\"font-family:Arial,sans-serif;padding:12px;color:#e5e7eb;\"><p>Add a meta tag that sets the author name to <strong>Your Name</strong>.</p></body>",
+      "hint": "<body style=\"font-family:Arial,sans-serif;padding:12px;color:#e5e7eb;\"><p>Use <code>name=\"author\"</code> and <code>content</code>.</p></body>",
+      "starterCode": {
+        "filename": "/index.html",
+        "code": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <title>Author</title>\n  </head>\n  <body>\n  </body>\n</html>"
+      },
+      "regex": "<meta\\s+name=\"author\"\\s+content=\"Your Name\"\\s*/?>",
+      "output": "<meta name=\"author\" content=\"Your Name\">",
+      "hintXp": 30
+    }
+  }
+];
+
   
 export async function GET(req: NextRequest) {
   for (const item of DATA) {
@@ -124,5 +125,5 @@ export async function GET(req: NextRequest) {
     });
   }
 
-  return NextResponse.json({ success: true });
+  return NextResponse.json({ success: true });   
 }

@@ -13,14 +13,17 @@ import { monokaiPro } from "@codesandbox/sandpack-themes";
 import { useParams } from "next/navigation";
 import axios from "axios";
 import { toast } from "sonner";
+import { useState } from "react";
 type Props={
   courseExerciseData: CourseExercise | undefined,
   loading:boolean
 }
 function CodeEditor({ courseExerciseData,loading}:Props) {
   const {exerciseslug}=useParams();
+  const [isCompletedLocally, setIsCompletedLocally] = useState(false);
+  
   const exerciseIndex=courseExerciseData?.exercises?.findIndex(item=>item.slug==exerciseslug)
-const isCompleted=courseExerciseData?.completedExercise?.find(item=>item.exerciseId==Number(exerciseIndex)+1);
+const isCompleted=isCompletedLocally || courseExerciseData?.completedExercise?.find(item=>item.exerciseId==Number(exerciseIndex)+1);
   const onCompletedExercise= async()=>{
     
     if(exerciseIndex==undefined){
@@ -34,6 +37,7 @@ const isCompleted=courseExerciseData?.completedExercise?.find(item=>item.exercis
   })
   console.log(result);
   toast.success('Exercise completed!');
+  setIsCompletedLocally(true);
   }
   const starterCode =
     courseExerciseData?.exerciseData?.exerciseContent?.starterCode;

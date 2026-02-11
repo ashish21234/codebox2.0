@@ -87,7 +87,8 @@ const hasUnlimitedAccess = has&&has({ plan: 'unlimited' })
                   </div>
                   
                  {isExerciseCompleted(chapter?.chapterId,indexExc+1)?
-                  <Button variant={'pixel'} className='bg-green-600'>Completed</Button>:
+                 <Link href={'/courses/'+courseDetail?.courseId+'/'+(chapter?.chapterId ?? chapter?.id ?? (index + 1))+'/'+exc?.slug}>
+                  <Button variant={'pixel'} className='bg-green-600'>Completed</Button> </Link>:
                   (courseDetail?.userEnrolled  && (!hasUnlimitedAccess && index<2))?
                  <Link href={'/courses/'+courseDetail?.courseId+'/'+(chapter?.chapterId ?? chapter?.id ?? (index + 1))+'/'+exc?.slug}>
                  <Button variant={'pixel'}>{exc?.xp} xp</Button>
