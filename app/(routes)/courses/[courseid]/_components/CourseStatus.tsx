@@ -29,7 +29,7 @@ function CourseStatus({courseDetail}:Props) {
         }
     },[courseDetail])
     const UpdateProgress=(currentValue:number,totalValue:number)=>{
-        if(currentValue&&totalValue){
+        if(totalValue>0){
             const perc=(currentValue*100)/totalValue;
             return perc;
         }
