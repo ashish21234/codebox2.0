@@ -34,7 +34,7 @@ function UserStatus() {
            <div className='flex gap-3 items-center'>
             <Image src={'/fire.png'} alt='star' width={35} height={35}/>
             <div>
-              <h2 className='font-game text-3xl'>12</h2>
+              <h2 className='font-game text-3xl'>{userDetail?.streak || 0}</h2>
               <h2 className='font-game text-xl text-gray-500'> Daily Streak</h2>
             </div>
            </div>
