@@ -1,0 +1,718 @@
+﻿Checking Course 4 Data...
+
+--- Chapters for Course 4 ---
+[
+  {
+    "id": 45,
+    "chapterId": 1,
+    "courseId": 4,
+    "name": "Introduction to Python",
+    "desc": "Learn what Python is and why it is one of the most popular programming languages.",
+    "exercises": [
+      {
+        "name": "What is Python?",
+        "slug": "what-is-python",
+        "xp": 15,
+        "difficulty": "easy"
+      },
+      {
+        "name": "Why Python?",
+        "slug": "why-python",
+        "xp": 15,
+        "difficulty": "easy"
+      },
+      {
+        "name": "Install Python",
+        "slug": "install-python",
+        "xp": 20,
+        "difficulty": "easy"
+      },
+      {
+        "name": "Run Your First Program",
+        "slug": "run-first-program",
+        "xp": 25,
+        "difficulty": "easy"
+      },
+      {
+        "name": "Python vs Other Languages",
+        "slug": "python-vs-languages",
+        "xp": 20,
+        "difficulty": "easy"
+      }
+    ]
+  },
+  {
+    "id": 46,
+    "chapterId": 2,
+    "courseId": 4,
+    "name": "Variables & Data Types",
+    "desc": "Understand variables and different data types in Python.",
+    "exercises": [
+      {
+        "name": "Creating Variables",
+        "slug": "creating-variables",
+        "xp": 20,
+        "difficulty": "easy"
+      },
+      {
+        "name": "Numbers & Strings",
+        "slug": "numbers-strings",
+        "xp": 20,
+        "difficulty": "easy"
+      },
+      {
+        "name": "Type Checking",
+        "slug": "type-checking",
+        "xp": 15,
+        "difficulty": "easy"
+      },
+      {
+        "name": "Type Conversion",
+        "slug": "type-conversion",
+        "xp": 25,
+        "difficulty": "easy"
+      },
+      {
+        "name": "Input from User",
+        "slug": "input-from-user",
+        "xp": 25,
+        "difficulty": "easy"
+      }
+    ]
+  },
+  {
+    "id": 47,
+    "chapterId": 3,
+    "courseId": 4,
+    "name": "Operators",
+    "desc": "Work with arithmetic, comparison, and logical operators.",
+    "exercises": [
+      {
+        "name": "Arithmetic Operators",
+        "slug": "arithmetic-operators",
+        "xp": 20,
+        "difficulty": "easy"
+      },
+      {
+        "name": "Comparison Operators",
+        "slug": "comparison-operators",
+        "xp": 20,
+        "difficulty": "easy"
+      },
+      {
+        "name": "Logical Operators",
+        "slug": "logical-operators",
+        "xp": 25,
+        "difficulty": "easy"
+      },
+      {
+        "name": "Assignment Operators",
+        "slug": "assignment-operators",
+        "xp": 15,
+        "difficulty": "easy"
+      }
+    ]
+  },
+  {
+    "id": 48,
+    "chapterId": 4,
+    "courseId": 4,
+    "name": "Conditional Statements",
+    "desc": "Control program flow using conditions.",
+    "exercises": [
+      {
+        "name": "If Statement",
+        "slug": "if-statement",
+        "xp": 20,
+        "difficulty": "easy"
+      },
+      {
+        "name": "If Else",
+        "slug": "if-else",
+        "xp": 20,
+        "difficulty": "easy"
+      },
+      {
+        "name": "Elif Ladder",
+        "slug": "elif-ladder",
+        "xp": 25,
+        "difficulty": "easy"
+      },
+      {
+        "name": "Nested Conditions",
+        "slug": "nested-conditions",
+        "xp": 30,
+        "difficulty": "medium"
+      }
+    ]
+  },
+  {
+    "id": 49,
+    "chapterId": 5,
+    "courseId": 4,
+    "name": "Loops",
+    "desc": "Repeat tasks efficiently using loops.",
+    "exercises": [
+      {
+        "name": "For Loop",
+        "slug": "for-loop",
+        "xp": 20,
+        "difficulty": "easy"
+      },
+      {
+        "name": "While Loop",
+        "slug": "while-loop",
+        "xp": 20,
+        "difficulty": "easy"
+      },
+      {
+        "name": "Break & Continue",
+        "slug": "break-continue",
+        "xp": 25,
+        "difficulty": "easy"
+      },
+      {
+        "name": "Loop Patterns",
+        "slug": "loop-patterns",
+        "xp": 35,
+        "difficulty": "medium"
+      }
+    ]
+  },
+  {
+    "id": 50,
+    "chapterId": 6,
+    "courseId": 4,
+    "name": "Functions",
+    "desc": "Write reusable blocks of code using functions.",
+    "exercises": [
+      {
+        "name": "Define a Function",
+        "slug": "define-function",
+        "xp": 25,
+        "difficulty": "easy"
+      },
+      {
+        "name": "Function Parameters",
+        "slug": "function-parameters",
+        "xp": 25,
+        "difficulty": "easy"
+      },
+      {
+        "name": "Return Values",
+        "slug": "return-values",
+        "xp": 20,
+        "difficulty": "easy"
+      },
+      {
+        "name": "Function Practice",
+        "slug": "function-practice",
+        "xp": 35,
+        "difficulty": "medium"
+      }
+    ]
+  },
+  {
+    "id": 51,
+    "chapterId": 7,
+    "courseId": 4,
+    "name": "Lists & Tuples",
+    "desc": "Store and manage collections of data.",
+    "exercises": [
+      {
+        "name": "List Basics",
+        "slug": "list-basics",
+        "xp": 20,
+        "difficulty": "easy"
+      },
+      {
+        "name": "List Methods",
+        "slug": "list-methods",
+        "xp": 25,
+        "difficulty": "easy"
+      },
+      {
+        "name": "Tuple Basics",
+        "slug": "tuple-basics",
+        "xp": 20,
+        "difficulty": "easy"
+      },
+      {
+        "name": "List vs Tuple",
+        "slug": "list-vs-tuple",
+        "xp": 20,
+        "difficulty": "easy"
+      }
+    ]
+  },
+  {
+    "id": 52,
+    "chapterId": 8,
+    "courseId": 4,
+    "name": "Dictionaries & Sets",
+    "desc": "Work with key-value pairs and unique collections.",
+    "exercises": [
+      {
+        "name": "Dictionary Basics",
+        "slug": "dictionary-basics",
+        "xp": 25,
+        "difficulty": "easy"
+      },
+      {
+        "name": "Dictionary Operations",
+        "slug": "dictionary-operations",
+        "xp": 30,
+        "difficulty": "medium"
+      },
+      {
+        "name": "Set Basics",
+        "slug": "set-basics",
+        "xp": 20,
+        "difficulty": "easy"
+      },
+      {
+        "name": "Set Operations",
+        "slug": "set-operations",
+        "xp": 30,
+        "difficulty": "medium"
+      }
+    ]
+  },
+  {
+    "id": 53,
+    "chapterId": 9,
+    "courseId": 4,
+    "name": "Strings",
+    "desc": "Manipulate and process text data.",
+    "exercises": [
+      {
+        "name": "String Indexing",
+        "slug": "string-indexing",
+        "xp": 20,
+        "difficulty": "easy"
+      },
+      {
+        "name": "String Methods",
+        "slug": "string-methods",
+        "xp": 25,
+        "difficulty": "easy"
+      },
+      {
+        "name": "String Formatting",
+        "slug": "string-formatting",
+        "xp": 30,
+        "difficulty": "medium"
+      },
+      {
+        "name": "String Practice",
+        "slug": "string-practice",
+        "xp": 35,
+        "difficulty": "medium"
+      }
+    ]
+  },
+  {
+    "id": 54,
+    "chapterId": 10,
+    "courseId": 4,
+    "name": "Basic File Handling",
+    "desc": "Read from and write to files in Python.",
+    "exercises": [
+      {
+        "name": "Read a File",
+        "slug": "read-a-file",
+        "xp": 25,
+        "difficulty": "easy"
+      },
+      {
+        "name": "Write to a File",
+        "slug": "write-to-a-file",
+        "xp": 25,
+        "difficulty": "easy"
+      },
+      {
+        "name": "Append to File",
+        "slug": "append-to-file",
+        "xp": 20,
+        "difficulty": "easy"
+      },
+      {
+        "name": "File Handling Practice",
+        "slug": "file-handling-practice",
+        "xp": 35,
+        "difficulty": "medium"
+      }
+    ]
+  },
+  {
+    "id": 55,
+    "chapterId": 1,
+    "courseId": 4,
+    "name": "Introduction to Python",
+    "desc": "Learn what Python is and why it is one of the most popular programming languages.",
+    "exercises": [
+      {
+        "name": "What is Python?",
+        "slug": "what-is-python",
+        "xp": 15,
+        "difficulty": "easy"
+      },
+      {
+        "name": "Why Python?",
+        "slug": "why-python",
+        "xp": 15,
+        "difficulty": "easy"
+      },
+      {
+        "name": "Install Python",
+        "slug": "install-python",
+        "xp": 20,
+        "difficulty": "easy"
+      },
+      {
+        "name": "Run Your First Program",
+        "slug": "run-first-program",
+        "xp": 25,
+        "difficulty": "easy"
+      },
+      {
+        "name": "Python vs Other Languages",
+        "slug": "python-vs-languages",
+        "xp": 20,
+        "difficulty": "easy"
+      }
+    ]
+  },
+  {
+    "id": 56,
+    "chapterId": 2,
+    "courseId": 4,
+    "name": "Variables & Data Types",
+    "desc": "Understand variables and different data types in Python.",
+    "exercises": [
+      {
+        "name": "Creating Variables",
+        "slug": "creating-variables",
+        "xp": 20,
+        "difficulty": "easy"
+      },
+      {
+        "name": "Numbers & Strings",
+        "slug": "numbers-strings",
+        "xp": 20,
+        "difficulty": "easy"
+      },
+      {
+        "name": "Type Checking",
+        "slug": "type-checking",
+        "xp": 15,
+        "difficulty": "easy"
+      },
+      {
+        "name": "Type Conversion",
+        "slug": "type-conversion",
+        "xp": 25,
+        "difficulty": "easy"
+      },
+      {
+        "name": "Input from User",
+        "slug": "input-from-user",
+        "xp": 25,
+        "difficulty": "easy"
+      }
+    ]
+  },
+  {
+    "id": 57,
+    "chapterId": 3,
+    "courseId": 4,
+    "name": "Operators",
+    "desc": "Work with arithmetic, comparison, and logical operators.",
+    "exercises": [
+      {
+        "name": "Arithmetic Operators",
+        "slug": "arithmetic-operators",
+        "xp": 20,
+        "difficulty": "easy"
+      },
+      {
+        "name": "Comparison Operators",
+        "slug": "comparison-operators",
+        "xp": 20,
+        "difficulty": "easy"
+      },
+      {
+        "name": "Logical Operators",
+        "slug": "logical-operators",
+        "xp": 25,
+        "difficulty": "easy"
+      },
+      {
+        "name": "Assignment Operators",
+        "slug": "assignment-operators",
+        "xp": 15,
+        "difficulty": "easy"
+      }
+    ]
+  },
+  {
+    "id": 58,
+    "chapterId": 4,
+    "courseId": 4,
+    "name": "Conditional Statements",
+    "desc": "Control program flow using conditions.",
+    "exercises": [
+      {
+        "name": "If Statement",
+        "slug": "if-statement",
+        "xp": 20,
+        "difficulty": "easy"
+      },
+      {
+        "name": "If Else",
+        "slug": "if-else",
+        "xp": 20,
+        "difficulty": "easy"
+      },
+      {
+        "name": "Elif Ladder",
+        "slug": "elif-ladder",
+        "xp": 25,
+        "difficulty": "easy"
+      },
+      {
+        "name": "Nested Conditions",
+        "slug": "nested-conditions",
+        "xp": 30,
+        "difficulty": "medium"
+      }
+    ]
+  },
+  {
+    "id": 59,
+    "chapterId": 5,
+    "courseId": 4,
+    "name": "Loops",
+    "desc": "Repeat tasks efficiently using loops.",
+    "exercises": [
+      {
+        "name": "For Loop",
+        "slug": "for-loop",
+        "xp": 20,
+        "difficulty": "easy"
+      },
+      {
+        "name": "While Loop",
+        "slug": "while-loop",
+        "xp": 20,
+        "difficulty": "easy"
+      },
+      {
+        "name": "Break & Continue",
+        "slug": "break-continue",
+        "xp": 25,
+        "difficulty": "easy"
+      },
+      {
+        "name": "Loop Patterns",
+        "slug": "loop-patterns",
+        "xp": 35,
+        "difficulty": "medium"
+      }
+    ]
+  },
+  {
+    "id": 60,
+    "chapterId": 6,
+    "courseId": 4,
+    "name": "Functions",
+    "desc": "Write reusable blocks of code using functions.",
+    "exercises": [
+      {
+        "name": "Define a Function",
+        "slug": "define-function",
+        "xp": 25,
+        "difficulty": "easy"
+      },
+      {
+        "name": "Function Parameters",
+        "slug": "function-parameters",
+        "xp": 25,
+        "difficulty": "easy"
+      },
+      {
+        "name": "Return Values",
+        "slug": "return-values",
+        "xp": 20,
+        "difficulty": "easy"
+      },
+      {
+        "name": "Function Practice",
+        "slug": "function-practice",
+        "xp": 35,
+        "difficulty": "medium"
+      }
+    ]
+  },
+  {
+    "id": 61,
+    "chapterId": 7,
+    "courseId": 4,
+    "name": "Lists & Tuples",
+    "desc": "Store and manage collections of data.",
+    "exercises": [
+      {
+        "name": "List Basics",
+        "slug": "list-basics",
+        "xp": 20,
+        "difficulty": "easy"
+      },
+      {
+        "name": "List Methods",
+        "slug": "list-methods",
+        "xp": 25,
+        "difficulty": "easy"
+      },
+      {
+        "name": "Tuple Basics",
+        "slug": "tuple-basics",
+        "xp": 20,
+        "difficulty": "easy"
+      },
+      {
+        "name": "List vs Tuple",
+        "slug": "list-vs-tuple",
+        "xp": 20,
+        "difficulty": "easy"
+      }
+    ]
+  },
+  {
+    "id": 62,
+    "chapterId": 8,
+    "courseId": 4,
+    "name": "Dictionaries & Sets",
+    "desc": "Work with key-value pairs and unique collections.",
+    "exercises": [
+      {
+        "name": "Dictionary Basics",
+        "slug": "dictionary-basics",
+        "xp": 25,
+        "difficulty": "easy"
+      },
+      {
+        "name": "Dictionary Operations",
+        "slug": "dictionary-operations",
+        "xp": 30,
+        "difficulty": "medium"
+      },
+      {
+        "name": "Set Basics",
+        "slug": "set-basics",
+        "xp": 20,
+        "difficulty": "easy"
+      },
+      {
+        "name": "Set Operations",
+        "slug": "set-operations",
+        "xp": 30,
+        "difficulty": "medium"
+      }
+    ]
+  },
+  {
+    "id": 63,
+    "chapterId": 9,
+    "courseId": 4,
+    "name": "Strings",
+    "desc": "Manipulate and process text data.",
+    "exercises": [
+      {
+        "name": "String Indexing",
+        "slug": "string-indexing",
+        "xp": 20,
+        "difficulty": "easy"
+      },
+      {
+        "name": "String Methods",
+        "slug": "string-methods",
+        "xp": 25,
+        "difficulty": "easy"
+      },
+      {
+        "name": "String Formatting",
+        "slug": "string-formatting",
+        "xp": 30,
+        "difficulty": "medium"
+      },
+      {
+        "name": "String Practice",
+        "slug": "string-practice",
+        "xp": 35,
+        "difficulty": "medium"
+      }
+    ]
+  },
+  {
+    "id": 64,
+    "chapterId": 10,
+    "courseId": 4,
+    "name": "Basic File Handling",
+    "desc": "Read from and write to files in Python.",
+    "exercises": [
+      {
+        "name": "Read a File",
+        "slug": "read-a-file",
+        "xp": 25,
+        "difficulty": "easy"
+      },
+      {
+        "name": "Write to a File",
+        "slug": "write-to-a-file",
+        "xp": 25,
+        "difficulty": "easy"
+      },
+      {
+        "name": "Append to File",
+        "slug": "append-to-file",
+        "xp": 20,
+        "difficulty": "easy"
+      },
+      {
+        "name": "File Handling Practice",
+        "slug": "file-handling-practice",
+        "xp": 35,
+        "difficulty": "medium"
+      }
+    ]
+  }
+]
+
+--- Exercises for Course 4 ---
+[
+  {
+    "courseId": 4,
+    "chapterId": 3,
+    "exerciseId": "what-is-python"
+  },
+  {
+    "courseId": 4,
+    "chapterId": 3,
+    "exerciseId": "why-python"
+  },
+  {
+    "courseId": 4,
+    "chapterId": 3,
+    "exerciseId": "install-python"
+  },
+  {
+    "courseId": 4,
+    "chapterId": 3,
+    "exerciseId": "run-first-program"
+  },
+  {
+    "courseId": 4,
+    "chapterId": 3,
+    "exerciseId": "python-vs-languages"
+  }
+]

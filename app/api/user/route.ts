@@ -13,10 +13,27 @@ export async function POST(request: NextRequest) {
     const newUser={
         name:user?.fullName??' ',
         email:user?.primaryEmailAddress?.emailAddress??' ',
-        points:0
+        points:0,
+        streak: 0
     }
     const result=await db.insert(usersTable).values(newUser).returning();
     return NextResponse.json(result[0]);
     }
-    return NextResponse.json(users[0]);
+
+    const currentUserData = users[0];
+    const today = new Date().toLocaleDateString('en-CA');
+    const yesterday = new Date(Date.now() - 86400000).toLocaleDateString('en-CA');
+
+    if (currentUserData.lastExerciseDate && 
+        currentUserData.lastExerciseDate !== today && 
+        currentUserData.lastExerciseDate !== yesterday) {
+        
+        await db.update(usersTable).set({
+            streak: 0
+        }).where(eq(usersTable.email, currentUserData.email));
+        
+        currentUserData.streak = 0;
+    }
+
+    return NextResponse.json(currentUserData);
 }

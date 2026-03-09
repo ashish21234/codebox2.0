@@ -13,14 +13,15 @@ import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import Link from 'next/link';
 
- export type CourseExercise={
-  chapterId:number,
-  courseId:number,
-  desc:string,
-  name:string,
-  exercises:exercise[],
+export type CourseExercise = {
+  chapterId: number,
+  courseId: number,
+  desc: string,
+  name: string,
+  editorType: string,
+  exercises: exercise[],
 
-   prevChapter?: {
+  prevChapter?: {
     chapterId: number;
     exercises: exercise[];
   };
@@ -30,142 +31,163 @@ import Link from 'next/link';
     exercises: exercise[];
   };
 
-  exerciseData:ExerciseData,
-  completedExercise:CompletedExercises[]
+  exerciseData: ExerciseData,
+  completedExercise: CompletedExercises[]
 
 }
 
-type ExerciseData={
-  chapterId:number,
-  courseId:number,
-  exerciseId:string,
-  exerciseName:string,
-  exerciseContent:ExerciseContent
+type ExerciseData = {
+  chapterId: number,
+  courseId: number,
+  exerciseId: string,
+  exerciseName: string,
+  exerciseContent: ExerciseContent
 }
 
-type ExerciseContent={
- content:string,
- hint:string,
- hintXp:string,
- starterCode:any,
- task:string
-}
-
-
-function Playground() {
-const {courseid,chapterId,exerciseslug}=useParams();
-const [loading,setLoading]=useState(false);
-const [ExerciseInfo,setExerciseInfo]=useState<exercise>();
-const [CourseExerciseData,setCourseExerciseData]=useState<CourseExercise>();
-const [nextButtonRoute,setNextButtonRoute]=useState<string>();
-const [prevButtonRoute,setPrevButtonRoute]=useState<string>();
-
-useEffect(() => {
-  if (courseid && chapterId && exerciseslug) {
-    GetExerciseCourseDetail();
-  }
-}, [courseid, chapterId, exerciseslug]);
-
-
-const GetExerciseCourseDetail = async () => {
-  setLoading(true);
-  const result = await axios.post('/api/exercise',{
-    courseId:courseid,
-    chapterId:chapterId,
-    exerciseId:exerciseslug
-  })
-  setLoading(false);
-  console.log(result.data);
-  setCourseExerciseData(result.data);
-}
-
-
-useEffect(() => {
-  if (!CourseExerciseData) return;
-
-  GetExerciseDetail();
-  GetNavigationButtons();
-}, [CourseExerciseData, exerciseslug]);
-
-
-
-
-const GetNavigationButtons = () => {
-  if (!CourseExerciseData) return;
-
-  const { exercises, prevChapter, nextChapter } = CourseExerciseData;
-
-  const currentIndex = exercises.findIndex(
-    (item) => item.slug === exerciseslug
-  );
-
-  /* ---------- PREVIOUS ---------- */
-  if (currentIndex > 0) {
-    setPrevButtonRoute(
-      `/courses/${courseid}/${chapterId}/${exercises[currentIndex - 1].slug}`
-    );
-  } else if (prevChapter && prevChapter.exercises.length > 0) {
-    const lastExercise =
-      prevChapter.exercises[prevChapter.exercises.length - 1];
-
-    setPrevButtonRoute(
-      `/courses/${courseid}/${prevChapter.chapterId}/${lastExercise.slug}`
-    );
-  } else {
-    setPrevButtonRoute(`/courses/${courseid}`);
-  }
-
-  /* ---------- NEXT ---------- */
-  if (currentIndex < exercises.length - 1) {
-    setNextButtonRoute(
-      `/courses/${courseid}/${chapterId}/${exercises[currentIndex + 1].slug}`
-    );
-  } else if (nextChapter && nextChapter.exercises.length > 0) {
-    const firstExercise = nextChapter.exercises[0];
-
-    setNextButtonRoute(
-      `/courses/${courseid}/${nextChapter.chapterId}/${firstExercise.slug}`
-    );
-  } else {
-    setNextButtonRoute(undefined); // course finished
-  }
+type ExerciseContent = {
+  content: string;
+  task: string;
+  hint: string;
+  starterCode: {
+    filename: string;
+    code: string;
+  };
+  regex: string;
+  output: string;
+  hintXp: number;
 };
 
 
 
-const GetExerciseDetail=()=>{
-  const ExerciseInfo=CourseExerciseData?.exercises?.find((item)=>item.slug==exerciseslug);
-  setExerciseInfo(ExerciseInfo);
-}
+function Playground() {
+  const { courseid, chapterId, exerciseslug } = useParams();
+  const [loading, setLoading] = useState(true);
+  const [ExerciseInfo, setExerciseInfo] = useState<exercise>();
+  const [CourseExerciseData, setCourseExerciseData] = useState<CourseExercise>();
+  const [nextButtonRoute, setNextButtonRoute] = useState<string>();
+  const [prevButtonRoute, setPrevButtonRoute] = useState<string>();
+
+  useEffect(() => {
+    if (courseid && chapterId && exerciseslug) {
+      GetExerciseCourseDetail();
+    }
+  }, [courseid, chapterId, exerciseslug]);
 
 
-  useEffect(()=>{
-     document.body.style.overflow = 'hidden';
-     return () => {
-       document.body.style.overflow = '';
-     };
-  },[])
+  const GetExerciseCourseDetail = async () => {
+    setLoading(true);
+    const result = await axios.post('/api/exercise', {
+      courseId: courseid,
+      chapterId: chapterId,
+      exerciseId: exerciseslug
+    })
+    setLoading(false);
+    console.log(result.data);
+    setCourseExerciseData(result.data);
+  }
 
+
+  useEffect(() => {
+    if (!CourseExerciseData) return;
+
+    GetExerciseDetail();
+    GetNavigationButtons();
+  }, [CourseExerciseData, exerciseslug]);
+
+
+
+
+  const GetNavigationButtons = () => {
+    if (!CourseExerciseData) return;
+
+    const { exercises, prevChapter, nextChapter } = CourseExerciseData;
+
+    const currentIndex = exercises.findIndex(
+      (item) => item.slug === exerciseslug
+    );
+
+    /* ---------- PREVIOUS ---------- */
+    if (currentIndex > 0) {
+      setPrevButtonRoute(
+        `/courses/${courseid}/${chapterId}/${exercises[currentIndex - 1].slug}`
+      );
+    } else if (prevChapter && prevChapter.exercises.length > 0) {
+      const lastExercise =
+        prevChapter.exercises[prevChapter.exercises.length - 1];
+
+      setPrevButtonRoute(
+        `/courses/${courseid}/${prevChapter.chapterId}/${lastExercise.slug}`
+      );
+    } else {
+      setPrevButtonRoute(`/courses/${courseid}`);
+    }
+
+    /* ---------- NEXT ---------- */
+    if (currentIndex < exercises.length - 1) {
+      setNextButtonRoute(
+        `/courses/${courseid}/${chapterId}/${exercises[currentIndex + 1].slug}`
+      );
+    } else if (nextChapter && nextChapter.exercises.length > 0) {
+      const firstExercise = nextChapter.exercises[0];
+
+      setNextButtonRoute(
+        `/courses/${courseid}/${nextChapter.chapterId}/${firstExercise.slug}`
+      );
+    } else {
+      setNextButtonRoute(undefined); // course finished
+    }
+  };
+
+
+
+  const GetExerciseDetail = () => {
+    const ExerciseInfo = CourseExerciseData?.exercises?.find((item) => item.slug == exerciseslug);
+    setExerciseInfo(ExerciseInfo);
+  }
+
+
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [])
+
+
+  if (loading) {
+    return (
+      <div className='fixed inset-0 bg-zinc-950 flex flex-col items-center justify-center gap-6'>
+        <Image
+          src='/machine.webp'
+          alt='Loading'
+          width={180}
+          height={180}
+          className='animate-pulse'
+        />
+        <p className='font-game text-2xl text-zinc-400'>Loading exercise...</p>
+      </div>
+    );
+  }
 
   return (
     <div className='border-t-4'>
-        <SplitterLayout percentage primaryMinSize={40} secondaryInitialSize={60}>
-        <div><ContentSection courseExerciseData={CourseExerciseData} loading={loading}/></div>
-        <div><CodeEditor courseExerciseData={CourseExerciseData} loading={loading}/></div>
+      <SplitterLayout percentage primaryMinSize={40} secondaryInitialSize={60}>
+        <div><ContentSection courseExerciseData={CourseExerciseData} loading={loading} /></div>
+        <div><CodeEditor courseExerciseData={CourseExerciseData} loading={loading} /></div>
       </SplitterLayout>
       <div className="font-game fixed bottom-0 w-full bg-zinc-900 flex p-3 justify-between items-center">
-        <Link href={prevButtonRoute??'/courses/'+courseid}>
-      <Button variant={'pixel'} className="text-xl">Previous</Button>
-      </Link>
-      <div className='flex gap-2 items-center'>
-        <Image src='/star.ico' alt='star' width={30} height={30}/>
-        <h2 className='text-xl'>You can Earn <span className='text-4xl'>{ExerciseInfo?.xp}</span> Xp</h2>
+        <Link href={prevButtonRoute ?? '/courses/' + courseid}>
+          <Button variant={'pixel'} className="text-xl">Previous</Button>
+        </Link>
+        <div className='flex gap-2 items-center'>
+          <Image src='/star.ico' alt='star' width={30} height={30} />
+          <h2 className='text-xl'>You can Earn <span className='text-4xl'>{ExerciseInfo?.xp}</span> Xp</h2>
 
+        </div>
+        <Link href={nextButtonRoute ?? '/courses/' + courseid}>
+          <Button variant={'pixel'} className="text-xl">Next</Button>
+        </Link>
       </div>
-      <Link href={nextButtonRoute??'/courses/'+courseid}>
-      <Button variant={'pixel'} className="text-xl">Next</Button>
-      </Link>
-    </div>
     </div>
   )
 }
