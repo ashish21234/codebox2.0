@@ -9,6 +9,7 @@ const SplitterLayout = dynamic(() => import('react-splitter-layout'), { ssr: fal
 import { CompletedExercises, exercise } from '../../../_components/CourseList';
 import ContentSection from './_components/ContentSection';
 import CodeEditor from './_components/CodeEditor';
+import StudyMaterials from '../../_components/StudyMaterials';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -172,7 +173,10 @@ function Playground() {
   return (
     <div className='border-t-4'>
       <SplitterLayout percentage primaryMinSize={40} secondaryInitialSize={60}>
-        <div><ContentSection courseExerciseData={CourseExerciseData} loading={loading} /></div>
+        <div className="overflow-y-auto">
+          <ContentSection courseExerciseData={CourseExerciseData} loading={loading} />
+          <StudyMaterials searchTopic={CourseExerciseData?.exerciseData?.exerciseName} />
+        </div>
         <div><CodeEditor courseExerciseData={CourseExerciseData} loading={loading} /></div>
       </SplitterLayout>
       <div className="font-game fixed bottom-0 w-full bg-zinc-900 flex p-3 justify-between items-center">
