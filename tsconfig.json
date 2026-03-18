@@ -30,5 +30,5 @@
     ".next/dev/types/**/*.ts",
     "**/*.mts"
   ],
-  "exclude": ["node_modules", "fix_course_4_type.ts"]
+  "exclude": ["node_modules"]
 }
