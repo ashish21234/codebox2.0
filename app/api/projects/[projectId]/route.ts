@@ -4,13 +4,14 @@ import { currentUser } from "@clerk/nextjs/server";
 import { eq, and } from "drizzle-orm";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(req: NextRequest, { params }: { params: { projectId: string } }) {
+export async function GET(req: NextRequest, { params }: { params: Promise<{ projectId: string }> }) {
     const user = await currentUser();
     if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
+    const { projectId } = await params;
     const result = await db.select().from(projectsTable).where(
         and(
-            eq(projectsTable.id, parseInt(params.projectId)),
+            eq(projectsTable.id, parseInt(projectId)),
             eq(projectsTable.userId, user.id)
         )
     );
@@ -41,10 +42,11 @@ export async function GET(req: NextRequest, { params }: { params: { projectId: s
     return NextResponse.json(result[0]);
 }
 
-export async function PUT(req: NextRequest, { params }: { params: { projectId: string } }) {
+export async function PUT(req: NextRequest, { params }: { params: Promise<{ projectId: string }> }) {
     const user = await currentUser();
     if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
+    const { projectId } = await params;
     const { files, title } = await req.json();
 
     // If files is an object, Drizzle handles it.
@@ -58,7 +60,7 @@ export async function PUT(req: NextRequest, { params }: { params: { projectId: s
         .set(updateData)
         .where(
             and(
-                eq(projectsTable.id, parseInt(params.projectId)),
+                eq(projectsTable.id, parseInt(projectId)),
                 eq(projectsTable.userId, user.id)
             )
         )
