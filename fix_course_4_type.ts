@@ -1,6 +1,6 @@
 import "dotenv/config";
-import { db } from "./config/db.tsx";
-import { CourseTable } from "./config/schema.tsx";
+import { db } from "./config/db";
+import { CourseTable } from "./config/schema";
 import { eq } from "drizzle-orm";
 
 async function run() {
