@@ -1,6 +1,8 @@
-# 📦 CodeBox - AI-Powered Coding Adventure
+# 📦 CodeBox - AI-Powered Coding Adventure [![Live](https://img.shields.io/badge/Live-Demo-brightgreen)](https://codebox-2.vercel.app/)
 
 CodeBox is a modern, AI-integrated learning platform designed to help beginners start their coding journey through interactive courses, real-world projects, and AI-assisted study materials.
+
+**[Live Demo](https://codebox-2.vercel.app/)**
 
 ![Banner](/public/hero1.gif)
 
