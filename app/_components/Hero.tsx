@@ -7,7 +7,7 @@ import React from 'react'
 
 function Hero() {
   const {user} = useUser();
-  return (
+  return ( 
     <div className='w-full relative h-screen overflow-hidden'>
         <Image src={'/hero1.gif'} alt="Hero" width={1000} height={1000} className='w-full h-full object-cover absolute inset-0' />
         <div className='absolute w-full flex flex-col items-center mt-24'>
