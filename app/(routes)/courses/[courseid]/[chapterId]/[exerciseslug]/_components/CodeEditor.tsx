@@ -9,8 +9,10 @@ import {
   useSandpackConsole,
 } from "@codesandbox/sandpack-react";
 import { python } from "@codemirror/lang-python";
-import SplitterLayout from "react-splitter-layout";
+import dynamic from "next/dynamic";
 import "react-splitter-layout/lib/index.css";
+
+const SplitterLayout = dynamic(() => import("react-splitter-layout"), { ssr: false });
 import { CourseExercise } from "../page";
 import { Button } from "@/components/ui/button";
 import { monokaiPro } from "@codesandbox/sandpack-themes";
@@ -124,6 +126,62 @@ const CodeEditorChildren = ({ onCompletedExercise, isCompleted, starterCode, cou
   const [aiLoading, setAiLoading] = useState(false);
   const [aiResponse, setAiResponse] = useState("");
   const [prompt, setPrompt] = useState("");
+  const [isValidating, setIsValidating] = useState(false);
+
+  // AI-based validation: sends code + task to Gemini and checks if requirements are met
+  const onValidate = async () => {
+    const sc = courseExerciseData?.exerciseData?.exerciseContent?.starterCode;
+    const task = courseExerciseData?.exerciseData?.exerciseContent?.task;
+    const content = courseExerciseData?.exerciseData?.exerciseContent?.content;
+
+    // Get current code from sandpack editor
+    const filename = sc?.filename?.startsWith("/") ? sc.filename : `/${sc?.filename}`;
+    const currentCode = sandpack.files?.[filename]?.code ?? "";
+
+    // No task defined — allow completion directly
+    if (!task) {
+      onCompletedExercise();
+      return;
+    }
+
+    setIsValidating(true);
+    try {
+      const result = await axios.post("/api/ai", {
+        prompt: `You are a strict but fair code exercise validator.
+
+The student was given this task:
+"${task}"
+
+The student submitted this code:
+\`\`\`
+${currentCode}
+\`\`\`
+
+Did the student complete the required task? 
+- Ignore any extra/additional code in the body or elsewhere — only check if the SPECIFIC requirement in the task is fulfilled.
+- Reply with ONLY: "YES" if the task is completed, or "NO: <brief reason>" if not.`,
+        code: currentCode,
+        exerciseContext: { task, content }
+      });
+
+      const aiReply: string = result.data.result?.trim() ?? "";
+
+      if (aiReply.toUpperCase().startsWith("YES")) {
+        toast.success("✅ Great job! Task completed!");
+        onCompletedExercise();
+      } else {
+        // Show AI's reason so user knows what to fix
+        const reason = aiReply.replace(/^NO[:\s]*/i, "").trim();
+        toast.error(`❌ ${reason || "Task not completed. Review the requirements and try again."}`);
+      }
+    } catch (e) {
+      // AI unavailable — fall back to allowing completion
+      toast.success("Exercise completed! 🎉");
+      onCompletedExercise();
+    } finally {
+      setIsValidating(false);
+    }
+  };
 
   const handleAskAI = async () => {
     if (!prompt) return;
@@ -197,12 +255,11 @@ const CodeEditorChildren = ({ onCompletedExercise, isCompleted, starterCode, cou
       </Button>
       <Button
         variant={"pixel"}
-        className="bg-[#a3e534] text-xl"
         size={"lg"}
-        disabled={isCompleted}
-        onClick={() => onCompletedExercise()}
+        disabled={isCompleted || isValidating}
+        onClick={() => onValidate()}
       >
-        {isCompleted ? "Already Completed!" : "Mark Completed"}
+        {isCompleted ? "Already Completed!" : isValidating ? <><Loader2 className="animate-spin mr-2" />Checking...</> : "Mark Completed"}
       </Button>
     </div>
   );
@@ -232,10 +289,11 @@ function CodeEditor({ courseExerciseData, loading }: Props) {
       exerciseId: exerciseIndex + 1,
       xpEarned: courseExerciseData?.exercises[exerciseIndex].xp,
     });
-    console.log(result);
-    toast.success("Exercise completed!");
+    toast.success("Exercise completed! 🎉");
     setIsCompletedLocally(true);
   };
+
+
   const starterCode =
     courseExerciseData?.exerciseData?.exerciseContent?.starterCode;
 
